@@ -1,0 +1,116 @@
+.App {
+  text-align: center;
+}
+
+h4{
+    font-size:14px;
+    padding-left:70px;
+    padding-right:70px;
+}
+
+.page-title{
+    text-align:left;
+}
+
+.header{
+    color:#123364;
+    font-weight:bold;
+    font-size:14px;
+    margin-top:50px;
+}
+
+.sub-header{
+    font-size:12px;
+    margin-top:10px;
+    margin-bottom:40px;
+}
+
+.question{
+    padding:20px;
+    border:1px solid #eee;
+    border-bottom:0px;
+    border-radius:3px;
+    max-width:600px;
+    margin:auto;
+}
+
+.agree{
+    font-size:11px;
+    color:green;
+    position:relative;
+    top:-5px;
+}
+
+.disagree{
+    font-size:11px;
+    color:red;
+    margin-right:20px;
+    position:relative;
+    top:-5px;
+}
+
+.question input{
+    margin-right:20px;
+    margin-top:10px;
+    width: 18px;
+    height: 18px;
+}
+
+.email{
+    border:1px solid #eee;
+    border-radius:3px;
+    max-width:600px;
+    margin:auto;
+    padding:20px;
+
+}
+
+.email input{
+   width:450px;
+    height:40px;
+    border:2px solid #AAAAAA;
+    padding-left:10px;
+    border-radius:4px;
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+.email input::placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+
+.submit-b{
+    background-color:#3D5AFA;
+    color:white;
+    font-size:14px;
+    margin-top:50px;
+    margin-bottom:50px;
+    font-weight: bold;
+}
+
+.perspective{
+    width:90%;
+    padding:40px;
+    border:2px solid #eee;
+    border-radius:5px;
+    margin:auto;
+    margin-top:50px;
+}
+
+.p-type div{
+    width:50%;
+    height:12px;
+    background: #E9ECEF;
+    float:left;
+}
+
+.type-row{
+    font-size:10px;
+    color:darkslategray;
+    margin-top:15px;
+}
+
+.p-type div.selected{
+    background:#A921CB;
+}
