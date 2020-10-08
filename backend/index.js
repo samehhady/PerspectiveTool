@@ -3,7 +3,6 @@ const app = express();
 const port = 4000;
 const cors = require( 'cors' );
 let db = require( './db/mysql' );
-let database = { candidates: [] };
 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true } ) );
