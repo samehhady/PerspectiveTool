@@ -22,7 +22,13 @@ class Perspective extends React.Component
 
     componentDidMount()
     {
-        this.setState( { perspectives: Api.getPerspectives(), result: this.props.location.state.result } );
+        if(this.props.location.state)
+        {
+            Api.getPerspectives().then( ( data ) =>
+            {
+                this.setState( { perspectives: data, result: this.props.location.state.result } );
+            } );
+        }
     }
 
     getData = ( val ) =>

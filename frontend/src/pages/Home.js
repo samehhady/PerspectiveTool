@@ -2,7 +2,7 @@ import React from 'react';
 import Question from '../components/Question'
 import {getAllDimensions, mapAnswersToQuestions} from '../Utilities'
 import Api from '../Api'
-import {Link, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 class Home extends React.Component
 {
@@ -18,8 +18,11 @@ class Home extends React.Component
 
     componentDidMount()
     {
-        this.setState( {
-            questions: Api.getQuestions()
+        Api.getQuestions().then( ( data ) =>
+        {
+            this.setState( {
+                questions: data
+            } );
         } );
     }
 
@@ -66,10 +69,12 @@ class Home extends React.Component
 
         let dimension = getAllDimensions( questionsWithAnswers );
 
-        this.props.history.push( {
-            pathname: '/results',
-            state: { result: dimension }
-        } );
+        Api.saveAnswers({email:this.state.email, answers:this.state.answers}).then((res)=>{
+            this.props.history.push( {
+                pathname: '/results',
+                state: { result: dimension }
+            } );
+        });
     };
 
     render()
@@ -81,7 +86,7 @@ class Home extends React.Component
             <form className="container" onSubmit={this.handleSubmit}>
                 <div className="page-title">
                     <div className="header">Discover Your Perspective</div>
-                    <div className="sub-header">Complete the 7 min test and get a detailed report of your lenses on the world or <Link to="/results">check your results</Link>
+                    <div className="sub-header">Complete the 7 min test and get a detailed report of your lenses on the world.
                     </div>
                 </div>
                 <div className="q-container">
