@@ -1,18 +1,8 @@
 import React from 'react';
 import Perspective from '../components/Perspective'
 
-class Home extends React.Component
+class Results extends React.Component
 {
-    constructor( props )
-    {
-        super( props );
-        this.state = {}
-    }
-
-    componentDidMount()
-    {
-    }
-
     render()
     {
         return (
@@ -21,4 +11,4 @@ class Home extends React.Component
     }
 }
 
-export default Home
+export default Results
