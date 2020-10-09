@@ -34,8 +34,8 @@ app.post( '/saveAnswers', ( req, res ) =>
                 if( result.length )
                 {
                     // If user found update it, no need to create new one
-                    let sql = "UPDATE users SET answers = ? WHERE email = ?";
-                    db.query( sql, [answers, req.body.email], function( err )
+                    let sql = "UPDATE users SET answers = ?, result = ? WHERE email = ?";
+                    db.query( sql, [answers, req.body.result, req.body.email], function( err )
                     {
                         if( err ) throw err;
                     } );
@@ -43,7 +43,7 @@ app.post( '/saveAnswers', ( req, res ) =>
                 else
                 {
                     // If not found then create a new user.
-                    let sql = "INSERT INTO users (email, answers) VALUES ('" + req.body.email + "', '" + answers + "')";
+                    let sql = "INSERT INTO users (email, answers, result) VALUES ('" + req.body.email + "', '" + answers + "', '" + req.body.result + "')";
                     db.query( sql, function( err, result )
                     {
                         if( err ) throw err;

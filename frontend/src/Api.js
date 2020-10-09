@@ -30,14 +30,14 @@ export default class Api
         } )
     }
 
-    static saveAnswers = (object) =>
+    static saveAnswers = ( object ) =>
     {
         return new Promise( ( resolve, reject ) =>
         {
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(object)
+                body: JSON.stringify( object )
             };
 
             fetch( this.apiUrl + "/saveAnswers", requestOptions )

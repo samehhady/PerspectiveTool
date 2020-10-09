@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 08, 2020 at 03:49 PM
+-- Generation Time: Oct 09, 2020 at 11:02 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -32,6 +32,7 @@ CREATE TABLE `users` (
   `id` int(10) NOT NULL,
   `email` varchar(200) NOT NULL,
   `answers` json NOT NULL,
+  `result` varchar(100) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

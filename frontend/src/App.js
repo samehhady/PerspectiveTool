@@ -13,14 +13,14 @@ function App()
     return (
         <Router>
             <div className="App">
-            <Switch>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route path="/results">
-                    <Results />
-                </Route>
-            </Switch>
+                <Switch>
+                    <Route exact path="/">
+                        <Home/>
+                    </Route>
+                    <Route path="/results">
+                        <Results/>
+                    </Route>
+                </Switch>
             </div>
         </Router>
     );

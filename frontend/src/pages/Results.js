@@ -6,7 +6,7 @@ class Results extends React.Component
     render()
     {
         return (
-            <Perspective />
+            <Perspective/>
         )
     }
 }

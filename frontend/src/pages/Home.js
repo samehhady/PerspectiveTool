@@ -69,12 +69,13 @@ class Home extends React.Component
 
         let dimension = getAllDimensions( questionsWithAnswers );
 
-        Api.saveAnswers({email:this.state.email, answers:this.state.answers}).then((res)=>{
+        Api.saveAnswers( { email: this.state.email, answers: this.state.answers, result: dimension } ).then( ( res ) =>
+        {
             this.props.history.push( {
                 pathname: '/results',
                 state: { result: dimension }
             } );
-        });
+        } );
     };
 
     render()

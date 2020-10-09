@@ -22,7 +22,7 @@ class Perspective extends React.Component
 
     componentDidMount()
     {
-        if(this.props.location.state)
+        if( this.props.location.state )
         {
             Api.getPerspectives().then( ( data ) =>
             {
