@@ -3,7 +3,7 @@ const app = express();
 const port = 4000;
 const cors = require( 'cors' );
 const helmet = require( "helmet" );
-const dbService = require('./db.service');
+const dbService = require( './db.service' );
 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true } ) );
@@ -15,14 +15,12 @@ app.use( helmet() );
 
 app.get( '/questions', ( req, res ) =>
 {
-    let questions = require( './questions.json' );
-    res.json( questions );
+    res.json( dbService.getQuestions() );
 } );
 
 app.get( '/perspectives', ( req, res ) =>
 {
-    let perspectives = require( './perspectives.json' );
-    res.json( perspectives );
+    res.json( dbService.getPerspectives() );
 } );
 
 app.post( '/answers', ( req, res ) =>
@@ -31,7 +29,7 @@ app.post( '/answers', ( req, res ) =>
     {
         try
         {
-            dbService.postAnswers(req);
+            dbService.postAnswers( req );
         }
         catch( error )
         {

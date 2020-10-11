@@ -1,6 +1,7 @@
 let db = require( './db/mysql' );
 
-exports.postAnswers = (req) => {
+exports.postAnswers = ( req ) =>
+{
     let answers = JSON.stringify( req.body.answers );
 
     // Check if we have a saved user with that email
@@ -25,4 +26,14 @@ exports.postAnswers = (req) => {
             } );
         }
     } );
+};
+
+exports.getPerspectives = () =>
+{
+    return require( './perspectives.json' );
+};
+
+exports.getQuestions = () =>
+{
+    return require( './questions.json' );
 };
