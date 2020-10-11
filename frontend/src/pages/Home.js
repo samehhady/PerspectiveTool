@@ -1,7 +1,7 @@
 import React from 'react';
 import Question from '../components/Question'
-import {getAllDimensions, mapAnswersToQuestions} from '../Utilities'
-import Api from '../Api'
+import * as Utilities from '../Utilities'
+import * as API from '../Api'
 import {withRouter} from "react-router-dom";
 
 class Home extends React.Component
@@ -18,7 +18,7 @@ class Home extends React.Component
 
     componentDidMount()
     {
-        Api.getQuestions().then( ( data ) =>
+        API.getQuestions().then( ( data ) =>
         {
             this.setState( {
                 questions: data
@@ -65,11 +65,11 @@ class Home extends React.Component
             return;
         }
 
-        let questionsWithAnswers = mapAnswersToQuestions( this.state.answers, this.state.questions );
+        let questionsWithAnswers = Utilities.mapAnswersToQuestions( this.state.answers, this.state.questions );
 
-        let dimension = getAllDimensions( questionsWithAnswers );
+        let dimension = Utilities.getAllDimensions( questionsWithAnswers );
 
-        Api.saveAnswers( { email: this.state.email, answers: this.state.answers, result: dimension } ).then( ( res ) =>
+        API.saveAnswers( { email: this.state.email, answers: this.state.answers, result: dimension } ).then( ( res ) =>
         {
             this.props.history.push( {
                 pathname: '/results',

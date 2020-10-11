@@ -2,26 +2,29 @@ const express = require( 'express' );
 const app = express();
 const port = 4000;
 const cors = require( 'cors' );
+const helmet = require("helmet");
 let db = require( './db/mysql' );
 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true } ) );
 app.use( cors() );
+// Lets secure the APIs.
+app.use(helmet());
 
 
-app.get( '/getQuestions', ( req, res ) =>
+app.get( '/questions', ( req, res ) =>
 {
     let questions = require( './questions.json' );
     res.json( questions );
 } );
 
-app.get( '/getPerspectives', ( req, res ) =>
+app.get( '/perspectives', ( req, res ) =>
 {
     let perspectives = require( './perspectives.json' );
     res.json( perspectives );
 } );
 
-app.post( '/saveAnswers', ( req, res ) =>
+app.post( '/answers', ( req, res ) =>
 {
     if( req.body && req.body.email )
     {
@@ -43,8 +46,8 @@ app.post( '/saveAnswers', ( req, res ) =>
                 else
                 {
                     // If not found then create a new user.
-                    let sql = "INSERT INTO users (email, answers, result) VALUES ('" + req.body.email + "', '" + answers + "', '" + req.body.result + "')";
-                    db.query( sql, function( err, result )
+                    let sql = "INSERT INTO users (email, answers, result) VALUES ('?', '?', '?')";
+                    db.query( sql, [req.body.email, answers, req.body.result], function( err, result )
                     {
                         if( err ) throw err;
                     } );

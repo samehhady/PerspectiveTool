@@ -1,5 +1,5 @@
 import React from 'react';
-import Api from '../Api';
+import * as API from '../Api';
 import PerspectiveItem from "./PerspectiveItem";
 import {getPerspectiveTitle} from "../Utilities"
 import {withRouter} from "react-router-dom";
@@ -24,7 +24,7 @@ class Perspective extends React.Component
     {
         if( this.props.location.state )
         {
-            Api.getPerspectives().then( ( data ) =>
+            API.getPerspectives().then( ( data ) =>
             {
                 this.setState( { perspectives: data, result: this.props.location.state.result } );
             } );
