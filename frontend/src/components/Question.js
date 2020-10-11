@@ -11,10 +11,7 @@ class Question extends React.Component
         };
     }
 
-    handleChange = ( e ) =>
-    {
-        this.props.handleChange( e.target.name, e.target.value )
-    };
+    handleChange = ( e ) => this.props.handleChange( e.target.name, e.target.value );
 
     render()
     {

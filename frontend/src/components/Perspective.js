@@ -15,10 +15,9 @@ class Perspective extends React.Component
         }
     }
 
-    handleChange = ( e ) =>
-    {
-        this.props.handleChange( e.target.name, e.target.value )
-    };
+    handleChange = ( e ) => this.props.handleChange( e.target.name, e.target.value );
+
+    getData = ( val ) => this.state.perspectives.find( a => a.title === getPerspectiveTitle( val ) );
 
     componentDidMount()
     {
@@ -30,11 +29,6 @@ class Perspective extends React.Component
             } );
         }
     }
-
-    getData = ( val ) =>
-    {
-        return this.state.perspectives.find( a => a.title === getPerspectiveTitle( val ) )
-    };
 
     render()
     {

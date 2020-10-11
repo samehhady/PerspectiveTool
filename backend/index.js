@@ -2,14 +2,15 @@ const express = require( 'express' );
 const app = express();
 const port = 4000;
 const cors = require( 'cors' );
-const helmet = require("helmet");
-let db = require( './db/mysql' );
+const helmet = require( "helmet" );
+const dbService = require('./db.service');
 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true } ) );
 app.use( cors() );
+
 // Lets secure the APIs.
-app.use(helmet());
+app.use( helmet() );
 
 
 app.get( '/questions', ( req, res ) =>
@@ -28,31 +29,9 @@ app.post( '/answers', ( req, res ) =>
 {
     if( req.body && req.body.email )
     {
-        let answers = JSON.stringify( req.body.answers );
         try
         {
-            // Check if we have a saved user with that email
-            db.query( "SELECT * FROM users WHERE email = ?", [req.body.email], function( err, result )
-            {
-                if( result.length )
-                {
-                    // If user found update it, no need to create new one
-                    let sql = "UPDATE users SET answers = ?, result = ? WHERE email = ?";
-                    db.query( sql, [answers, req.body.result, req.body.email], function( err )
-                    {
-                        if( err ) throw err;
-                    } );
-                }
-                else
-                {
-                    // If not found then create a new user.
-                    let sql = "INSERT INTO users (email, answers, result) VALUES ('?', '?', '?')";
-                    db.query( sql, [req.body.email, answers, req.body.result], function( err, result )
-                    {
-                        if( err ) throw err;
-                    } );
-                }
-            } );
+            dbService.postAnswers(req);
         }
         catch( error )
         {

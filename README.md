@@ -24,6 +24,7 @@
 - The server will use port `4000`
 - Questions are saved in a json file located in backend root.
 - I've added 3 simple test-cases for APIs using `Mocha`, you can run them using `npm test`
+- I'm using Helmet as a middleware to secure express apis.
 
 
 ### `What is done?`
