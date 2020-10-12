@@ -19,7 +19,7 @@ exports.postAnswers = ( req ) =>
         else
         {
             // If not found then create a new user.
-            let sql = "INSERT INTO users (email, answers, result) VALUES ('?', '?', '?')";
+            let sql = "INSERT INTO users (email, answers, result) VALUES (?, ?, ?)";
             return db.query( sql, [req.body.email, answers, req.body.result], function( err, result )
             {
                 if( err ) throw err;
