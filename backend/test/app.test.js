@@ -11,7 +11,7 @@ describe( "Backend Testing", () =>
     {
         chai
             .request( app )
-            .get( "/getQuestions" )
+            .get( "/questions" )
             .set( 'Content-Type', 'application/json' )
             .end( ( err, res ) =>
             {
@@ -24,7 +24,7 @@ describe( "Backend Testing", () =>
     {
         chai
             .request( app )
-            .get( "/getPerspectives" )
+            .get( "/perspectives" )
             .set( 'Content-Type', 'application/json' )
             .end( ( err, res ) =>
             {
@@ -37,13 +37,13 @@ describe( "Backend Testing", () =>
     {
         chai
             .request( app )
-            .post( "/saveAnswers" )
+            .post( "/answers" )
             .set( 'Content-Type', 'application/json' )
             .send( {} )
             .end( ( err, res ) =>
             {
                 expect( res ).to.have.status( 400 );
-                expect( res.body.saved ).to.equals( "ok" );
+                expect( res.body.error ).to.equals( "No body sent" );
                 done();
             } );
     } );

@@ -27,20 +27,18 @@ app.post( '/answers', ( req, res ) =>
 {
     if( req.body && req.body.email )
     {
-        try
+        dbService.postAnswers( req ).then( ( result ) =>
         {
-            dbService.postAnswers( req );
-        }
-        catch( error )
+            res.send( { saved: 'ok' } );
+        } ).catch( ( err ) =>
         {
-            return res.status( 400 ).json( { error: error.toString() } );
-        }
+            return res.status( 400 ).json( { error: err.toString() } );
+        } );
     }
     else
     {
-        res.status( 400 );
+        res.status( 400 ).json( { error: 'No body sent' } );
     }
-    res.send( { saved: 'ok' } );
 } );
 
 app.listen( port, () =>
